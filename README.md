@@ -34,13 +34,9 @@ This project aims to capture change data in sales transactions, process it, and 
 - JSON path determines the partition key for the Kinesis Stream.
 - Each data change is captured as a separate record.
 
-**Kinesis Firehose:**
+**Kinesis Firehose and Lambda Transformation:**
 - Kinesis Firehose batches data from the Kinesis Stream.
 - Batches are sent to Lambda for transforming data into the desired format.
-
-**Lambda Transformation:**
-- Lambda function receives batched data from Kinesis Firehose.
-- It transforms the data into the desired format.
 - Transformed data is returned to Kinesis Firehose.
 
 **S3 Data Storage:**
@@ -52,7 +48,6 @@ This project aims to capture change data in sales transactions, process it, and 
 
 **Data Analysis with Athena:**
 - Athena is utilized for data analysis.
-- Queries are performed to gain insights and perform analytics on sales data.
 
 ## Key Learnings
 - **Change Data Capture (CDC) Implementation**: Understanding the process of capturing and processing change data in real-time from sales transactions.
