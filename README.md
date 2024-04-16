@@ -5,6 +5,8 @@ This project aims to capture change data in sales transactions, process it, and 
 
 ## Architecture
 
+![Alt Text](https://github.com/MrSachinGoyal/Change-Data-Capture-CDC-Sales-Data-Processing/blob/master/architecture.png)
+
 ## Prerequisites
 - **Programming Language**: Python 3.1 or higher
 - **Amazon Web Services (AWS) Account**:An active AWS account with the necessary permissions to create and manage services.
