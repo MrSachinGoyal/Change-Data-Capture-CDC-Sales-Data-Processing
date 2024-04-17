@@ -11,11 +11,11 @@ This project aims to capture change data in sales transactions, process it, and 
 - **Programming Language**: Python 3.1 or higher
 - **Amazon Web Services (AWS) Account**:An active AWS account with the necessary permissions to create and manage services.
 - **AWS Services**:
-  - DynamoDB:
-  - EventBridge:
-  - Kinesis Streams:
-  - Lambda:
-  - Kinesis Firehose:
+  - DynamoDB
+  - EventBridge
+  - Kinesis Streams
+  - Lambda
+  - Kinesis Firehose
   - S3
   - Glue
   - Athena
