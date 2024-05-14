@@ -1,7 +1,7 @@
 # Change-Data-Capture-CDC-Sales-Data-Processing
 
 ## Overview
-This project aims to capture change data in sales transactions, process and prepare it for ad-hoc analysis. The workflow involves generating mock sales data, storing it in DynamoDB, capturing data changes using DynamoDB Streams, transferring data to Kinesis Streams via EventBridge, transforming data with Lambda, storing it in an S3 bucket, cataloging metadata with Glue Crawler, and analyzing data with Athena.
+This project aims to capture data changes in sales transactions, process and prepare it for ad-hoc analysis. The workflow involves generating mock sales data, storing it in DynamoDB, capturing data changes using DynamoDB Streams, transferring data to Kinesis Streams via EventBridge, transforming data with Lambda, storing it in an S3 bucket, cataloging metadata with Glue Crawler, and analyzing data with Athena.
 
 ## Architecture
 
