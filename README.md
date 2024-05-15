@@ -22,32 +22,36 @@ This project aims to capture data changes in sales transactions, process and pre
 - **Note**: Ensure that appropriate IAM roles and permissions are assigned to access and manage the AWS services mentioned above.
 
 ## Workflow of the Project
-**Mock Data Generation**:
-- The Mock Data Generator script generates random sales data.
+**1. Mock Data Generation:**
+    - Develop a Python script to generate real-time sales data. This script will simulate sales transactions and continuously feed data into the system.
 
-**DynamoDB**
-- Data records are inserted into the DynamoDB table.
-- DynamoDB Stream captures data changes (insert, modify, remove).
+**2. DynamoDB Table Setup:**
+    - Create a DynamoDB table with a partition key to organize the data.
+    - Enable DynamoDB Streams on this table to capture item-level modifications (inserts, updates, deletes) in a time-ordered sequence.
 
-**EventBridge Pipe and Kinesis Stream:**
-- EventBridge transfers data from DynamoDB Stream to Kinesis Stream based on partition key.
-- JSON path determines the partition key for the Kinesis Stream.
-- Each data change is captured as a separate record.
+**3. Kinesis Stream Integration:**
+    - Create an Amazon Kinesis Stream to handle real-time data changes from the DynamoDB Stream.
+    - Use EventBridge Pipes to connect the DynamoDB Stream to the Kinesis Stream.
+    - Configure the partition key using JSONPath to determine the appropriate shard in the Kinesis Stream for storing the data. Each shard handles a specific range of hash values.
 
-**Kinesis Firehose and Lambda Transformation:**
-- Kinesis Firehose batches data from the Kinesis Stream.
-- Batches are sent to Lambda for transforming data into the desired format.
-- Transformed data is returned to Kinesis Firehose.
+**4. Data Transformation with Kinesis Firehose and Lambda Function:**
+    - Set up Kinesis Data Firehose to consume data in batches from the Kinesis Stream.
+    - Configure the Kinesis Firehose to send the batched data to an AWS Lambda function for transformation. Key configurations for the Lambda function include:
+        1. Buffer Size: The amount of data Kinesis Firehose gathers before sending it to the Lambda function.
+        2. Buffer Interval: The time Kinesis Firehose waits before sending the collected data to the Lambda function.
+    - Transform the data in the Lambda function as required.
+    - Send the transformed data back to Kinesis Firehose for final processing.
 
-**S3 Data Storage:**
-- Kinesis Firehose sends transformed data to the destined S3 bucket.
+**5. Persistent Storage:**
+    - Kinesis Firehose writes the transformed data to persistent storage, such as Amazon S3.
 
-**Glue Crawler:**
-- Glue Crawler is run on the S3 bucket to retrieve metadata required for analysis.
-- JSON classifier is defined while creating the crawler to interpret data schema.
+**6. Metadata and Schema Management with AWS Glue:**
+    - Create an AWS Glue Crawler to scan the data stored in S3.
+    - Use the crawler to generate a schema and metadata, which are stored in the AWS Glue Catalog, a centralized metadata repository.
 
-**Data Analysis with Athena:**
-- Athena is utilized for data analysis.
+**7. Data Analysis with AWS Athena:**
+    - Leverage the metadata in the AWS Glue Catalog to perform ad-hoc analysis using AWS Athena.
+    - Execute SQL queries directly on the data stored in S3, utilizing the schema and metadata information for efficient querying.
 
 ## Key Learnings
 - **Change Data Capture (CDC) Implementation**: Understanding the process of capturing and processing change data in real-time from sales transactions.
