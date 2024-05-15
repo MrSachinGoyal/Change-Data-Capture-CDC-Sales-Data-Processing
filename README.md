@@ -7,7 +7,7 @@ This project aims to capture data changes (insert, update, delete) in sales tran
 ![Alt Text](https://github.com/MrSachinGoyal/Change-Data-Capture-CDC-Sales-Data-Processing/blob/master/architecture.png)
 
 ## Prerequisites
-- **Programming Language**: Python 3.1 or higher
+- **Programming Language**: Python 3.11 or higher
 - **Amazon Web Services (AWS) Account**:An active AWS account with the necessary permissions to create and manage services.
 - **AWS Services**:
   - DynamoDB
