@@ -23,19 +23,19 @@ This project aims to capture real-time data changes (insert, update, delete) in 
 
 ## Workflow of the Project
 **1. Mock Data Generation:**
-  - Develop a Python script to generate real-time sales data. This script will simulate sales transactions and continuously feed data into the system.
+  - Develop a Python script to generate real-time sales data. This script will simulate sales transactions and continuously feed data into the DynamoDB Table.
 
 **2. DynamoDB Table Setup:**
   - Create a DynamoDB table with a partition key to organize the data.
   - Enable DynamoDB Streams on this table to capture item-level modifications (inserts, updates, deletes) in a time-ordered sequence.
 
 **3. Kinesis Stream Integration:**
-  - Create an Amazon Kinesis Stream to handle real-time data changes from the DynamoDB Stream.
+  - Create an Amazon Kinesis Stream to handle real-time data changes coming from the DynamoDB Stream.
   - Use EventBridge Pipes to connect the DynamoDB Stream to the Kinesis Stream.
-  - Configure the partition key using JSONPath to determine the appropriate shard in the Kinesis Stream for storing the data. Each shard handles a specific range of hash values.
+  - While setting Kinesis Stream as a target, configured the partition key using JSONPath to determine the appropriate shard in the Kinesis Stream for storing the data. Each shard handles a specific range of hash values.
 
 **4. Data Transformation with Kinesis Firehose and Lambda Function:**
-  - Set up Kinesis Data Firehose to consume data in batches from the Kinesis Stream.
+  - Set up Kinesis Firehose to consume data in batches from the Kinesis Stream.
   - Configure the Kinesis Firehose to send the batched data to an AWS Lambda function for transformation. Key configurations for the Lambda function include:
     - 1. Buffer Size: The amount of data Kinesis Firehose gathers before sending it to the Lambda function.
     - 2. Buffer Interval: The time Kinesis Firehose waits before sending the collected data to the Lambda function.
