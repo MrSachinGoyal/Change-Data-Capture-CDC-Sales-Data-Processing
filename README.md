@@ -1,7 +1,7 @@
 # Change-Data-Capture-CDC-Sales-Data-Processing
 
 ## Overview
-This project aims to capture real-time data changes (insert, update, delete) in sales transactions, process, and prepare it for ad-hoc analysis.
+This project aims to capture and process real-time data changes (insert, update, delete) in sales transactions data and prepare it for ad-hoc analysis.
 
 ## Architecture
 
