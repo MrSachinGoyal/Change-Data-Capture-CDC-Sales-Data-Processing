@@ -40,7 +40,7 @@ This project aims to capture and process real-time data changes (insert, update,
     - 1. Buffer Size: The amount of data Kinesis Firehose gathers before sending it to the Lambda function.
     - 2. Buffer Interval: The time Kinesis Firehose waits before sending the collected data to the Lambda function.
   - Transform the data in the Lambda function as required.
-  - Send the transformed data back to Kinesis Firehose for final processing.
+  - Send the transformed data back to Kinesis Firehose.
 
 **5. Persistent Storage:**
   - Kinesis Firehose writes the transformed data to persistent storage, such as Amazon S3.
